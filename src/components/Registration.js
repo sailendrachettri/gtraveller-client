@@ -12,9 +12,10 @@ export default function Registration() {
     const handleSubmit = async(e)=>{
         e.preventDefault();
 
+        const URL = "https://gtraveller-server.onrender.com"; // production url - backend
         const {firstname, lastname, email, phone, message} = credentials;
 
-        const response = await fetch("http://localhost:5000/", {    
+        const response = await fetch(URL, {    
             method :'POST',
             headers : {
                 'Content-type' : 'application/json'
