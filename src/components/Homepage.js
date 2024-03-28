@@ -1,4 +1,4 @@
-import Registration from "./Registration"
+import Contact from "./Contact"
 import Ratings from "./Ratings"
 import Qna from "./Qna"
 import Topdestination from "./Topdestingation"
@@ -11,7 +11,7 @@ export default function Homepage() {
             <Hero />
             <Galarrey />
             <Topdestination />
-            <Registration />
+            <Contact />
             <Ratings />
             <Qna />
         </>

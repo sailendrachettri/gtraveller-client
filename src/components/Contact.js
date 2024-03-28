@@ -1,36 +1,41 @@
 import { useState } from "react"
 
-export default function Registration() {
+
+export default function Contact() {
     // state variables
-    const [credentials, setCredentials] = useState({email:"", phone : "", firstname: "", lastname: "", message : ""})
+    const [credentials, setCredentials] = useState({ email: "", phone: "", firstname: "", lastname: "", message: "" })
 
     // methods
-    const onChange = (e) =>{
-        setCredentials({...credentials, [e.target.name] : e.target.value});
+    const onChange = (e) => {
+        setCredentials({ ...credentials, [e.target.name]: e.target.value });
     }
 
-    const handleSubmit = async(e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const URL = "https://gtraveller-server.onrender.com"; // production url - backend
-        const {firstname, lastname, email, phone, message} = credentials;
+        // let URL = "https://gtraveller-server.onrender.com"; backend
+        let URL = "http://localhost:5000";
 
-        const response = await fetch(URL, {    
-            method :'POST',
-            headers : {
-                'Content-type' : 'application/json'
+       
+
+        const { firstname, lastname, email, phone, message } = credentials;
+
+        const response = await fetch(`${URL}/api/auth/contact`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
             },
-            body : JSON.stringify({firstname, lastname, email, phone, message})
+            body: JSON.stringify({ firstname, lastname, email, phone, message })
         });
 
         const json = await response.json();
-        
-        if(json.success){            
+
+        if (json.success) {
             alert(`Thank you ${firstname} for registration`);
-            setCredentials({email:"", phone : "", firstname: "", lastname: "", message : ""})
-            
-            
-        } else{
+            setCredentials({ email: "", phone: "", firstname: "", lastname: "", message: "" })
+
+
+        } else {
             alert(json.message);
         }
 
@@ -49,7 +54,7 @@ export default function Registration() {
                     <div className="user-info">
                         <div className="details">
                             <label htmlFor="first-name">First Name</label>
-                            <input type="text" id="first-name" name="firstname" value={credentials.firstname} onChange={onChange} minLength={3}  required />
+                            <input type="text" id="first-name" name="firstname" value={credentials.firstname} onChange={onChange} minLength={3} required />
 
                             <label htmlFor="last-name">Last Name</label>
                             <input type="text" id="last-name" name="lastname" value={credentials.lastname} onChange={onChange} />

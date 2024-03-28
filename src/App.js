@@ -7,23 +7,11 @@ import Navbar from './components/Navbar';
 
 import { Routes, Route } from 'react-router-dom';
 import ScrollToAnchor from './components/ScrollToAnchor';
-// import Alert from './components/Alert';
-// import { useState } from 'react';
 
 function App() {
 
-  // show alert
-  // const [alert, setAlert] = useState(null);
-  // const showAlert = (message, type) =>{
-  //   setAlert({msg : message, type: type })
-  //   setTimeout(() => {
-  //     setAlert(null);
-  //   }, 3000);
-  // }
-
   return (
     <>
-      {/* <Alert message="This is the message" /> */}
       <Navbar />
       <ScrollToAnchor /> {/*same page navigation code */}
       <Routes>
