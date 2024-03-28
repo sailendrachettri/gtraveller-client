@@ -10,23 +10,27 @@ export default function Register() {
         e.preventDefault();
 
         const URL = 'http://localhost:5000/api/auth/register';
-        const {username, password, cpassword, phone} = credentials;
+        const { username, password, cpassword, phone } = credentials;
 
         const response = await fetch(URL, {
             method: 'POST',
             headers: {
-                'Content-type' : 'application/json'
+                'Content-type': 'application/json'
             },
-            body : JSON.stringify({username, password, cpassword, phone})
+            body: JSON.stringify({ username, password, cpassword, phone })
         })
 
         const data = await response.json();
 
-        if(data.success){
+        if (data.success) {
             localStorage.setItem("auth_token", data.auth_token);
+            localStorage.setItem('current_user', data.username);
+
             console.log(localStorage.getItem('auth_token'));
+            console.log(localStorage.getItem('current_user'));
+            
             alert(`Thank you for ${username} for registration.`);
-            setCredentials({username: "", password: "", cpassword : "", phone : ""});
+            setCredentials({ username: "", password: "", cpassword: "", phone: "" });
             navigate("/");
 
         } else {
@@ -48,7 +52,7 @@ export default function Register() {
                     <input type="text" id="username" name="username" value={credentials.username} onChange={handleOnchange} autoComplete='off' minLength={3} maxLength={12} required />
 
                     <label htmlFor="password">Password:</label>
-                     <input type="password" id="password" name="password" value={credentials.password} onChange={handleOnchange} autoComplete='off' minLength={6} maxLength={25} required />
+                    <input type="password" id="password" name="password" value={credentials.password} onChange={handleOnchange} autoComplete='off' minLength={6} maxLength={25} required />
 
                     <label htmlFor="cpassword">Confirm Password:</label>
                     <input type="password" id="cpassword" name="cpassword" value={credentials.cpassword} autoComplete='off' onChange={handleOnchange} required />

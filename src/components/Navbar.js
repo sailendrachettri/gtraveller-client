@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
@@ -12,8 +12,19 @@ export default function Navbar() {
 
     const handleLogout = () => {
         localStorage.removeItem("auth_token");
+        localStorage.removeItem("current_user");
         navigate("/login");
     }
+
+    useEffect(() => {
+        const fetchUser = () =>{
+            let URL = "http:localhost:5000/api/auth/fetchuser"; 
+            const response = fetch(URL);
+            const userinfo = response.json();
+            console.log(userinfo);            
+        }
+    }, [])
+    
 
     return (
         <header>
@@ -30,7 +41,7 @@ export default function Navbar() {
                     </div>
                         : <div style={{display: "flex"}}>
                             <li><Link to="#" className="nav-auth-btn"  onClick={handleLogout}>Logout</Link></li>
-                            <li id="current-user">Welcome, <span className="username"> @user</span></li>
+                            <li id="current-user">Welcome, <span className="username"> {`@${localStorage.getItem("current_user")? localStorage.getItem("current_user") : "Guest"}`}</span></li>
                         </div>}
                 </ul>
             </nav>

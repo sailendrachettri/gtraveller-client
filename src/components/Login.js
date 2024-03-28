@@ -31,7 +31,10 @@ export default function Login() {
             if (data.success) {
                 // save the auth-token and redirect
                 localStorage.setItem('auth_token', data.auth_token); 
+                localStorage.setItem('current_user', data.username); 
+
                 console.log(localStorage.getItem('auth_token'));
+                console.log(localStorage.getItem('current_user'));
                 alert("Logged in successfully!");
                 navigate("/");
 
