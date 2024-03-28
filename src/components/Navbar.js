@@ -1,12 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+    const navigate = useNavigate();
+
     const [open, setOpen] = useState(false);
 
     const openMenu = () => {
         setOpen(!open);
     };
+
+    const handleLogout = () => {
+        localStorage.removeItem("auth_token");
+        navigate("/login");
+    }
 
     return (
         <header>
@@ -16,8 +23,15 @@ export default function Navbar() {
                     <li><Link to="/#top-destinations">Places</Link></li>
                     <li><Link to="/#ratings">Review</Link></li>
                     <li><Link to="/#contact-form">Contact</Link></li>
-                    <li><Link to="/company">Company</Link></li>
-                    <li><Link to="/#qna">QnA</Link></li>
+                    {/* If the token is there then show logout btn else show login and register */}
+                    {!localStorage.getItem('auth_token') ? <div style={{ display: "flex" }}>
+                        <li><Link className="nav-auth-btn" to="/register">Register</Link></li>
+                        <li><Link className="nav-auth-btn active" to="/login">Login</Link></li>
+                    </div>
+                        : <div style={{display: "flex"}}>
+                            <li><Link to="#" className="nav-auth-btn"  onClick={handleLogout}>Logout</Link></li>
+                            <li id="current-user">Welcome, <span className="username"> @user</span></li>
+                        </div>}
                 </ul>
             </nav>
             <div className={`action ${open ? 'open-menu' : ''}`}>

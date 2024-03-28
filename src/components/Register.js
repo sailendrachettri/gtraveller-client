@@ -45,10 +45,10 @@ export default function Register() {
                 <h1>Create an Account</h1>
                 <div>
                     <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" value={credentials.username} onChange={handleOnchange} required />
+                    <input type="text" id="username" name="username" value={credentials.username} onChange={handleOnchange} autoComplete='off' minLength={3} maxLength={12} required />
 
                     <label htmlFor="password">Password:</label>
-                     <input type="password" id="password" name="password" value={credentials.password} onChange={handleOnchange} required />
+                     <input type="password" id="password" name="password" value={credentials.password} onChange={handleOnchange} autoComplete='off' minLength={6} maxLength={25} required />
 
                     <label htmlFor="cpassword">Confirm Password:</label>
                     <input type="password" id="cpassword" name="cpassword" value={credentials.cpassword} autoComplete='off' onChange={handleOnchange} required />

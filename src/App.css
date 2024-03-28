@@ -37,6 +37,30 @@ button {
   font-family: var(--para-font);
 }
 
+.nav-auth-btn{
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.nav-auth-btn:hover{
+  border-radius: 5px;
+}
+
+.active{
+  color: var(--text-color-dark);
+  background-color: var(--text-color-light);
+}
+
+#current-user{
+  color: var(--text-color-light);
+  padding-left: 5px;
+}
+
+#current-user .username{
+  font-weight: bold;
+}
+
 /* ICONS AND HEADER */
 .icon-and-header {
   margin-bottom: 1rem;
@@ -203,7 +227,7 @@ header .call-to-action .material-symbols-outlined {
 
   nav ul {
     position: absolute;
-    left: -150%;
+    left: -250%;
   }
 
   nav ul li{
@@ -232,7 +256,7 @@ header .call-to-action .material-symbols-outlined {
     top: 350px;
     height: 0;
     background-color: var(--bg-color);
-    left: -150%;
+    left: -250%;
     right: 0;
     transition: all 0.5s ease 0s;
   }
