@@ -35,7 +35,7 @@ export default function Contact() {
         const json = await response.json();
 
         if (json.success) {
-            alert(`Thank you ${firstname} for registration`);
+            alert(`Thank you ${firstname} for contacting us. You'll get your response in few moments.`);
             setCredentials({ email: "", phone: "", firstname: "", lastname: "", message: "" })
 
 
