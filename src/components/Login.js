@@ -30,7 +30,8 @@ export default function Login() {
 
             if (data.success) {
                 // save the auth-token and redirect
-                localStorage.setItem('token', data.authToken);
+                localStorage.setItem('auth_token', data.auth_token); 
+                console.log(localStorage.getItem('auth_token'));
                 alert("Logged in successfully!");
                 navigate("/");
 

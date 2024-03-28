@@ -23,8 +23,8 @@ export default function Register() {
         const data = await response.json();
 
         if(data.success){
-            localStorage.setItem("token", data.token);
-            console.log(localStorage.getItem('token'));
+            localStorage.setItem("auth_token", data.auth_token);
+            console.log(localStorage.getItem('auth_token'));
             alert(`Thank you for ${username} for registration.`);
             setCredentials({username: "", password: "", cpassword : "", phone : ""});
             navigate("/");
