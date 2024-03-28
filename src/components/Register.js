@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
+import { environment } from "../environment";
 
 export default function Register() {
     let navigate = useNavigate();
@@ -9,10 +10,16 @@ export default function Register() {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const URL = 'http://localhost:5000/api/auth/register';
+        let URL = "http://localhost:5000"; // default is 
+
+        if(environment === 'prod')
+            URL = "https://gtraveller-server.onrender.com";
+        
+        console.log(URL)
+
         const { username, password, cpassword, phone } = credentials;
 
-        const response = await fetch(URL, {
+        const response = await fetch(`${URL}/api/auth/register`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

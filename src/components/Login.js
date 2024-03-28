@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { environment } from "../environment";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -12,11 +13,17 @@ export default function Login() {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const URL = 'http://localhost:5000/api/auth/login';
+        let URL = "http://localhost:5000"; // default is local
+
+        if(environment === 'prod')
+            URL = "https://gtraveller-server.onrender.com";
+        
+        console.log(URL)
+
         const { username, password } = credentials;
 
         try {
-            const response = await fetch(URL, {
+            const response = await fetch(`${URL}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'

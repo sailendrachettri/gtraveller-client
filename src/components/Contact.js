@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { environment } from "../environment";
 
 
 export default function Contact() {
@@ -13,10 +14,13 @@ export default function Contact() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // let URL = "https://gtraveller-server.onrender.com"; backend
-        let URL = "http://localhost:5000";
+        let URL = "http://localhost:5000"; // default is local
+        
+        if (environment === 'prod')
+            URL = "https://gtraveller-server.onrender.com";
 
-       
+        console.log(URL)
+
 
         const { firstname, lastname, email, phone, message } = credentials;
 
