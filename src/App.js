@@ -7,6 +7,8 @@ import Navbar from './components/Navbar';
 
 import { Routes, Route } from 'react-router-dom';
 import ScrollToAnchor from './components/ScrollToAnchor';
+import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="*" element={<Homepage />} /> {/* if path doesn't exist the redirect to homepage */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/company" element={<Company />} />
       </Routes>
       <Footer />
