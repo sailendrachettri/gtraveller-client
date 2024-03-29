@@ -3,12 +3,12 @@ import Company from './components/Company';
 import Footer from './components/Footer';
 import Homepage from './components/Homepage';
 import Navbar from './components/Navbar';
-
-
 import { Routes, Route } from 'react-router-dom';
 import ScrollToAnchor from './components/ScrollToAnchor';
 import Login from './components/Login';
 import Register from './components/Register';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -24,6 +24,7 @@ function App() {
         <Route path="/company" element={<Company />} />
       </Routes>
       <Footer />
+      <ToastContainer position ="bottom-right" />
     </>
   );
 }

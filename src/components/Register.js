@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { environment } from "../environment";
+import { toast } from 'react-toastify';
 
 export default function Register() {
     let navigate = useNavigate();
@@ -14,8 +15,6 @@ export default function Register() {
 
         if(environment === 'prod')
             URL = "https://gtraveller-server.onrender.com";
-        
-        console.log(URL)
 
         const { username, password, cpassword, phone } = credentials;
 
@@ -30,20 +29,18 @@ export default function Register() {
         const data = await response.json();
 
         if (data.success) {
+            toast.success(`Thank you ${username} for registration.`);
+            toast.success(`Thank you ${username} for registration.`);
+
             localStorage.setItem("auth_token", data.auth_token);
             localStorage.setItem('current_user', data.username);
-
-            console.log(localStorage.getItem('auth_token'));
-            console.log(localStorage.getItem('current_user'));
             
-            alert(`Thank you for ${username} for registration.`);
             setCredentials({ username: "", password: "", cpassword: "", phone: "" });
             navigate("/");
 
         } else {
-            alert(data.message);
+            toast.error(data.message);
         }
-
     }
 
     const handleOnchange = (e) => {

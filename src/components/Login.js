@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { environment } from "../environment";
+import { toast } from 'react-toastify';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -17,8 +18,6 @@ export default function Login() {
 
         if(environment === 'prod')
             URL = "https://gtraveller-server.onrender.com";
-        
-        console.log(URL)
 
         const { username, password } = credentials;
 
@@ -32,21 +31,18 @@ export default function Login() {
             })
 
             const data = await response.json();
-            console.log(data)
-
 
             if (data.success) {
+                toast.success("Logged in successfully!");
+
                 // save the auth-token and redirect
                 localStorage.setItem('auth_token', data.auth_token); 
                 localStorage.setItem('current_user', data.username); 
-
-                console.log(localStorage.getItem('auth_token'));
-                console.log(localStorage.getItem('current_user'));
-                alert("Logged in successfully!");
+                
                 navigate("/");
 
             } else {
-                alert(data.message);
+                toast.error(data.message);
             }
 
         } catch (error) {

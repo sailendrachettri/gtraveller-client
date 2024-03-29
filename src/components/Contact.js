@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { environment } from "../environment";
+import { toast } from "react-toastify";
 
 
 export default function Contact() {
@@ -19,9 +20,6 @@ export default function Contact() {
         if (environment === 'prod')
             URL = "https://gtraveller-server.onrender.com";
 
-        console.log(URL)
-
-
         const { firstname, lastname, email, phone, message } = credentials;
 
         const response = await fetch(`${URL}/api/auth/contact`, {
@@ -35,15 +33,12 @@ export default function Contact() {
         const json = await response.json();
 
         if (json.success) {
-            alert(`Thank you ${firstname} for contacting us. You'll get your response in few moments.`);
+            toast.success(`Thank you ${firstname} for contacting us. You'll get your response in few moments.`)
             setCredentials({ email: "", phone: "", firstname: "", lastname: "", message: "" })
 
-
         } else {
-            alert(json.message);
+            toast.error(json.message)
         }
-
-
     }
 
     return (
