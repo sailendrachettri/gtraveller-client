@@ -5,46 +5,61 @@ import { toast } from 'react-toastify';
 
 export default function Register() {
     let navigate = useNavigate();
+
     // state variables
     const [credentials, setCredentials] = useState({ username: "", phone: "", cpassword: "", password: "" })
+    const [loading, setLoading] = useState("Register");
 
     async function handleSubmit(e) {
         e.preventDefault();
 
         let URL = "http://localhost:5000"; // default is 
 
-        if(environment === 'prod')
+        if (environment === 'prod')
             URL = "https://gtraveller-server.onrender.com";
 
         const { username, password, cpassword, phone } = credentials;
 
-        const response = await fetch(`${URL}/api/auth/register`, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({ username, password, cpassword, phone })
-        })
+        try {
 
-        const data = await response.json();
 
-        if (data.success) {
-            toast.success(`Thank you ${username} for registration.`);
-            toast.success(`Thank you ${username} for registration.`);
+            const response = await fetch(`${URL}/api/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ username, password, cpassword, phone })
+            })
 
-            localStorage.setItem("auth_token", data.auth_token);
-            localStorage.setItem('current_user', data.username);
-            
-            setCredentials({ username: "", password: "", cpassword: "", phone: "" });
-            navigate("/");
+            const data = await response.json();
 
-        } else {
-            toast.error(data.message);
+            if (data.success) {
+                toast.success(`Thank you ${username} for registration.`);
+
+                localStorage.setItem("auth_token", data.auth_token);
+                localStorage.setItem('current_user', data.username);
+
+                setCredentials({ username: "", password: "", cpassword: "", phone: "" });
+                navigate("/");
+
+            } else {
+                toast.error(data.message);
+                setLoading("Register")
+            }
+        } catch (error){
+            setLoading("Register")
+            toast.error("Internal server error. Please try again later.");
         }
     }
 
     const handleOnchange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    }
+
+    const handleLoading = () => {
+        // if user entered all the details then only show msg
+        if (credentials.username && credentials.password && credentials.cpassword && credentials.phone)
+            setLoading("Please wait...");
     }
 
     return (
@@ -64,7 +79,7 @@ export default function Register() {
                     <label htmlFor="phone">Phone:</label>
                     <input type="number" id="phone" name="phone" autoComplete='off' value={credentials.phone} onChange={handleOnchange} required />
 
-                    <button type='submit'>Register</button>
+                    <button type='submit' onClick={handleLoading} >{loading}</button>
 
                     <p>Already have account? <Link to="/login"> Login </Link></p>
                 </div>
