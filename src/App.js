@@ -24,7 +24,7 @@ function App() {
         <Route path="/company" element={<Company />} />
       </Routes>
       <Footer />
-      <ToastContainer position ="bottom-right" />
+      <ToastContainer />
     </>
   );
 }

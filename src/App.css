@@ -360,9 +360,6 @@ header .call-to-action .material-symbols-outlined {
 }
 
 @media (max-width: 630px) {
-  .hero .box {
-    padding: 1rem;
-  }
 
   .hero .box h1 {
     font-size: 1.5rem;
@@ -417,7 +414,7 @@ header .call-to-action .material-symbols-outlined {
 @media (max-width: 900px) {
   .locations-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .locations-card h2 {
@@ -425,10 +422,10 @@ header .call-to-action .material-symbols-outlined {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .locations-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -517,7 +514,7 @@ header .call-to-action .material-symbols-outlined {
   font-weight: bold;
 }
 
-@media (max-width:900px) {
+@media (max-width:1000px) {
   .ratings .reviews {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -525,14 +522,14 @@ header .call-to-action .material-symbols-outlined {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .ratings .reviews {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .ratings .reviews {
     display: grid;
     gap: 1rem;
@@ -583,6 +580,7 @@ header .call-to-action .material-symbols-outlined {
 .contact-form .user-info .details {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .contact-form label {
@@ -610,7 +608,7 @@ header .call-to-action .material-symbols-outlined {
   .user-info .msg-box {
     margin-left: 0;
     margin-top: 1.3rem;
-    width: 70%;
+    width: 100%;
   }
 
 }
