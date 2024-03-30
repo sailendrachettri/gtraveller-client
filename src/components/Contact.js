@@ -6,10 +6,16 @@ import { toast } from "react-toastify";
 export default function Contact() {
     // state variables
     const [credentials, setCredentials] = useState({ email: "", phone: "", firstname: "", lastname: "", message: "" })
+    const [isloading, setIsloading] = useState("Submit");
 
     // methods
     const onChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    }
+
+    const handleLoading = () =>{
+        if(credentials.email && credentials.message && credentials.phone && credentials.firstname)
+            setIsloading("Please wait...");
     }
 
     const handleSubmit = async (e) => {
@@ -22,6 +28,9 @@ export default function Contact() {
 
         const { firstname, lastname, email, phone, message } = credentials;
 
+        try{
+
+        
         const response = await fetch(`${URL}/api/auth/contact`, {
             method: 'POST',
             headers: {
@@ -35,10 +44,16 @@ export default function Contact() {
         if (json.success) {
             toast.success(`Thank you ${firstname} for contacting us. You'll get your response in few moments.`)
             setCredentials({ email: "", phone: "", firstname: "", lastname: "", message: "" })
+            setIsloading("Submit")
 
         } else {
             toast.error(json.message)
+            setIsloading("Submit")
         }
+    } catch(err){
+        setIsloading("Submit");
+        toast.error("Internal server error. Please try again later.");
+    }
     }
 
     return (
@@ -70,7 +85,7 @@ export default function Contact() {
                             <textarea name="message" id="message" cols="30" rows="8" value={credentials.message} onChange={onChange}></textarea>
                         </div>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" onClick={handleLoading}>{isloading}</button>
                 </form>
             </div>
         </>
