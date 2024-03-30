@@ -9,6 +9,9 @@ import Login from './components/Login';
 import Register from './components/Register';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Terms } from './components/Terms';
+import { Refund } from './components/Refund';
+import { Disclaimer } from './components/Disclaimer';
 
 function App() {
 
@@ -22,6 +25,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/company" element={<Company />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/refund" element={<Refund />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
       </Routes>
       <Footer />
       <ToastContainer />

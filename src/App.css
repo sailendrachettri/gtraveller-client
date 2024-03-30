@@ -37,27 +37,27 @@ button {
   font-family: var(--para-font);
 }
 
-.nav-auth-btn{
+.nav-auth-btn {
   border: 1px solid whitesmoke;
   border-radius: 5px;
   margin: 0 5px;
 }
 
-.nav-auth-btn:hover{
+.nav-auth-btn:hover {
   border-radius: 5px;
 }
 
-.active{
+.active {
   color: var(--text-color-dark);
   background-color: var(--text-color-light);
 }
 
-#current-user{
+#current-user {
   color: var(--text-color-light);
   padding-left: 5px;
 }
 
-#current-user .username{
+#current-user .username {
   font-weight: bold;
 }
 
@@ -230,7 +230,7 @@ header .call-to-action .material-symbols-outlined {
     left: -250%;
   }
 
-  nav ul li{
+  nav ul li {
     margin: 0.6rem 0;
   }
 
@@ -793,7 +793,7 @@ footer .social-handles img {
   color: var(--text-color-dark);
 }
 
-.login-signup-form button{
+.login-signup-form button {
   margin: 1rem 0;
 }
 
@@ -802,3 +802,17 @@ footer .social-handles img {
 }
 
 /* ----------------------LOGIN STYLE ENDED---------------------- */
+/* ----------------------SITEMAP PAGES STYLE STARTED---------------------- */
+.pages {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 20px;
+  color: #333;
+}
+
+.pages h1,
+.pages h2 {
+  color: #333;
+}
+
+/* ----------------------SITEMAP PAGES STYLE ENDED---------------------- */

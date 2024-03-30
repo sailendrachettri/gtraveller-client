@@ -25,16 +25,17 @@ export default function Footer() {
 
                 <div className="about-company">
                     <h1>Company</h1>
-                    <Link to="./pages/about.html" target="_blank">
+
+                    <Link to="/company">
                         <p>About Us</p>
                     </Link>
-                    <Link to="./pages/terms.html" target="_blank">
+                    <Link to="/terms" >
                         <p>Terms & Condition</p>
                     </Link>
-                    <Link to="./pages/disclaimer.html" target="_blank">
+                    <Link to="/disclaimer" >
                         <p>Disclaimer</p>
                     </Link>
-                    <Link to="./pages/refund.html" target="_blank">
+                    <Link to="/refund" >
                         <p>Refund Policy</p>
                     </Link>
                 </div>
