@@ -43,10 +43,10 @@ export default function Footer() {
                 <div className="social-handles">
                     <h1>Social Handles</h1>
                     <p>Follow us on</p>
-                    <Link to="#"><img src="./imgs/Icons/facebook.png" alt="Facebook" /> </Link>
-                    <Link to="#"><img src="./imgs/Icons/instagram.png" alt="Instagram" /> </Link>
-                    <Link to="#"><img src="./imgs/Icons/twitter.png" alt="Twitter" /> </Link>
-                    <Link to="#"><img src="./imgs/Icons/youtube.png" alt="Youtube" /> </Link>
+                    <Link to="https://www.linkedin.com/in/sailendrachettri/"><img src="./imgs/Icons/facebook.png" alt="Facebook" /> </Link>
+                    <Link to="https://www.linkedin.com/in/sailendrachettri/"><img src="./imgs/Icons/instagram.png" alt="Instagram" /> </Link>
+                    <Link to="https://twitter.com/sailendrz"><img src="./imgs/Icons/twitter.png" alt="Twitter" /> </Link>
+                    <Link to="https://twitter.com/sailendrz"><img src="./imgs/Icons/youtube.png" alt="Youtube" /> </Link>
                     <p>&nbsp;</p>
                 </div>
             </div>
