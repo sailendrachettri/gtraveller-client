@@ -55,7 +55,7 @@ Start the Server
   npm start
 
   cd gtraveller-server
-  nodemon i
+  nodemon index.js
 ```
 
 # New feature to be added
